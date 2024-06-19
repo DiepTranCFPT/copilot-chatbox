@@ -1,0 +1,28 @@
+#chat-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    font-family: Arial, sans-serif;
+}
+
+#messages {
+    border: 1px solid #ccc;
+    padding: 10px;
+    width: 80%;
+    height: 400px;
+    overflow-y: scroll;
+    margin-bottom: 10px;
+}
+
+#input {
+    width: 70%;
+    padding: 10px;
+    margin-right: 10px;
+}
+
+button {
+    padding: 10px 20px;
+    cursor: pointer;
+}
