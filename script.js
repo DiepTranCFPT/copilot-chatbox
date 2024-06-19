@@ -1,20 +1,29 @@
-function sendMessage() {
-    const input = document.getElementById('input');
-    const messages = document.getElementById('messages');
-    if (input.value) {
-        const now = new Date();
-        const timestamp = now.toLocaleTimeString();
+document.getElementById('send-button').addEventListener('click', sendMessage);
+document.getElementById('chat-input').addEventListener('keypress', function (e) {
+    if (e.key === 'Enter') {
+        sendMessage();
+    }
+});
 
+function sendMessage() {
+    const chatBox = document.getElementById('chat-box');
+    const chatInput = document.getElementById('chat-input');
+    const message = chatInput.value.trim();
+
+    if (message) {
+        // Display user message
         const userMessage = document.createElement('div');
-        userMessage.textContent = `${timestamp} - You: ${input.value}`;
-        messages.appendChild(userMessage);
+        userMessage.className = 'chat-message';
+        userMessage.textContent = `You: ${message}`;
+        chatBox.appendChild(userMessage);
 
         // Simulate Copilot response
         const copilotResponse = document.createElement('div');
-        copilotResponse.textContent = `${timestamp} - Copilot: Here’s a suggestion based on "${input.value}"`;
-        messages.appendChild(copilotResponse);
+        copilotResponse.className = 'chat-message';
+        copilotResponse.textContent = `Copilot: Here's a suggestion based on "${message}"`;
+        chatBox.appendChild(copilotResponse);
 
-        input.value = '';  // Clear the input field
-        messages.scrollTop = messages.scrollHeight;
+        chatInput.value = '';
+        chatBox.scrollTop = chatBox.scrollHeight;
     }
 }
